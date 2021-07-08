@@ -1,0 +1,26 @@
+.dropdown-toggle{
+    cursor: pointer;
+}
+
+.mat-badge-content {
+    border-radius:8px;
+}
+
+.badge{
+    height: 18px;
+    font-size: 10px;
+    border-radius: 7px;
+    background-color:#FF8F00;
+}
+.fa{
+    font-size:large;
+}
+
+.fa-leaf{
+    color:#303F9F;
+}
+
+
+.dropdown-toggle { 
+    cursor: pointer;
+  }

@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-6">
+        <form class="container" (ngSubmit)="save(f.value)" #f="ngForm">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input matInput #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required>
+                <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+                    Title is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input matInput #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control"
+                        aria-label="Amount (to the nearest dollar)" required [min]="0">
+                </div>
+                <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+                    <div *ngIf="price.errors.required">The price is required.</div>
+                    <div *ngIf="price.errors.min">The price should be 0 or higher.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <mat-select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
+                    <mat-option value=""></mat-option>
+                    <mat-option *ngFor="let c of categories$ | async" [value]="c.key">
+                        {{ c.val.name }}
+                    </mat-option>
+                </mat-select>
+                <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
+                    The category is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="imageUrl">Image URL</label>
+                <input matInput #imageUrl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control"
+                    required url>
+                <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+                    <div *ngIf="imageUrl.errors.required">The imageUrl is required.</div>
+                    <div *ngIf="imageUrl.errors.url">Please enter a valid URL.</div>
+                </div>
+            </div>
+            <button mat-flat-button color="primary" style="margin-right:20px">Save</button>
+            <button mat-flat-button color="warn" type="button" (click)="delete()">Delete</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <div class="container">
+            <app-product-card [product] ="product" [show-actions]="false"></app-product-card>
+        </div>
+    </div>
+</div>

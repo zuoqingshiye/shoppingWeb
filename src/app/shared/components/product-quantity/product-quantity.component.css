@@ -1,0 +1,20 @@
+.btn{
+    display:flex;
+    width:auto;
+    margin: auto;
+    font-family:Roboto;
+    font-size: 14px; 
+    justify-content:center;
+}
+button:hover{
+    background:#5C6BC0;
+    color:white;
+}
+.col-2{
+    flex:0;
+    margin:0;
+    padding:0;
+}
+.row{
+    margin:0;
+}

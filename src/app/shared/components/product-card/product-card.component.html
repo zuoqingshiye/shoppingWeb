@@ -1,0 +1,19 @@
+<div class="container">
+    <mat-card class="example-card" *ngIf="product.title">
+        <div class="ratio ratio-4x3">
+            <img mat-card-image [src]="product.imageUrl" *ngIf="product.imageUrl">
+        </div>
+        <mat-card-title>{{product.title}}</mat-card-title>
+        <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
+        <mat-card-content>
+            {{ product.price | currency:'USD':true }}
+        </mat-card-content>
+        <mat-card-footer *ngIf="showActions && shoppingCart">
+            <button (click)="addToCart()" class="btn btn-secondary w-100"
+                *ngIf="shoppingCart.getQuantity(product) === 0; else updateQuantity">Add to Cart</button>
+            <ng-template #updateQuantity>
+                <app-product-quantity [product]="product" [shopping-cart]="shoppingCart"></app-product-quantity>
+            </ng-template>
+        </mat-card-footer>
+    </mat-card>
+</div>

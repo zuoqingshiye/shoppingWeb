@@ -1,0 +1,62 @@
+<div class="container">
+    <p></p>
+    <p>
+        <a mat-flat-button routerLink="/admin/products/new" color="primary">New Product</a>
+    </p>
+    <div class="search-field">
+        <input (keyup)="applyFilter($event)" type="text" class="form-control" placeholder="Search...">
+    </div>
+    <div class="mat-elevatioin-z8">
+        <mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="title">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="price">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.price | currency:'USD': true}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="edit">
+                <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <p [routerLink]="['/admin/products/', row.key]" class="edit">
+                        <mat-icon>edit</mat-icon>
+                    </p>
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="loading">
+                <mat-footer-cell *matFooterCellDef colspan="6">Loading data...</mat-footer-cell>
+            </ng-container>
+            <ng-container matColumnDef="noData">
+                <mat-footer-cell *matFooterCellDef colspan="6">No data.</mat-footer-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+            <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':dataSource!=null}"></mat-footer-row>
+            <mat-footer-row *matFooterRowDef="['noData']"
+                [ngClass]="{'hide':!(dataSource!=null && dataSource.length==0)}"></mat-footer-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+    </div>
+
+    <!-- <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of filteredProducts">
+                <td>{{p.title}}</td>
+                <td>{{p.price | currency: 'USD': true}}</td>
+                <td>
+                    <a [routerLink]="['/admin/products/', p.key]">Edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table> -->
+</div>

@@ -1,0 +1,11 @@
+<div class="sticky-top">
+    <mat-selection-list [multiple]="false" class="list-group">  
+        <mat-list-option routerLink="/" class="list-group-item" [class.active]="!category">
+            All Categories
+        </mat-list-option>
+        <mat-list-option routerLink="/" [queryParams]="{category: c.key}"
+             *ngFor="let c of categories$ | async" class="list-group-item" [class.active]="category === c.key">
+            {{c.val.name}}
+        </mat-list-option>
+    </mat-selection-list>
+</div>

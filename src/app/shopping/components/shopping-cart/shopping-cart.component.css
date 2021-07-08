@@ -1,0 +1,24 @@
+.table{
+    font-family: Roboto;
+    vertical-align: middle;
+}
+
+.thumbnail{
+    width:80px;
+    height:80px;
+    border-radius: 100%;
+    background-size: cover;
+}
+.container{
+    margin-top:30px;
+}
+.btn{
+    width:auto;
+    font-family: Roboto;
+    font-size:14px;
+}
+
+.btn:hover{
+    background-color: #5C6BC0;
+    color:white;
+}

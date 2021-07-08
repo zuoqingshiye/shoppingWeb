@@ -1,0 +1,12 @@
+mat-selection-list{
+    margin: 0 0 0 0;
+}
+
+.active{
+    background-color :#3f51b5 !important;
+}
+
+.sticky-top{
+    top:30px;
+}
+  

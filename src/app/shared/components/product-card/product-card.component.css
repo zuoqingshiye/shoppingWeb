@@ -1,0 +1,18 @@
+.mat-card{
+    display: block;
+    vertical-align:middle;
+}
+.mat-card > .btn{
+    display:flex;
+    margin: auto;
+    font-family:Roboto;
+    font-size: 14px; 
+    justify-content:center;
+}
+button:hover{
+    background:#5C6BC0;
+    color:white;
+}
+.ratio .ratio-4x3{
+    object-fit: cover;
+}
